@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="shell">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="brand">
+        <img src="gambar/uner.png" alt="uner" width="70px">
+        <img src="gambar/bri.png" alt="bri" width="70px">
+        <div>
+          <h1>Dashboard Analisis Diskriminan</h1>
+          <div class="sub">Laporan Kolektibilitas dan Tunggakan</div>
+        </div>
+      </div>
+      <div class="meta">
+        <div>SAMPEL <b>n=60 (30:30)</b></div>
+        <div>METODE <b>LDA Fisher</b></div>
+        <div>STATUS <b>Semua Syarat ✓</b></div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs" id="tabs">
+      <button class="tab-btn active" data-tab="ringkasan">Ringkasan</button>
+      <button class="tab-btn" data-tab="asumsi">Uji Asumsi</button>
+      <button class="tab-btn" data-tab="fungsi">Fungsi &amp; Klasifikasi</button>
+      <button class="tab-btn" data-tab="rekomendasi">Rekomendasi</button>
+    </div>
+
+    <main>
+      <!-- KPI BAR (always visible) -->
+      <div class="kpi-bar">
+        <div class="kpi-card flag-ok">
+          <div class="kl">CCR</div>
+          <div class="kv num">75,0<small>%</small></div>
+        </div>
+        <div class="kpi-card flag-gold">
+          <div class="kl">R² Kanonik</div>
+          <div class="kv num">23,9<small>%</small></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kl">Wilks' Λ Sig.</div>
+          <div class="kv num">0,0014</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kl">Box's M Sig.</div>
+          <div class="kv num">0,269</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kl">VIF Maks</div>
+          <div class="kv num">1,35</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kl">Total Sampel</div>
+          <div class="kv num">60</div>
+        </div>
+      </div>
+
+      <!-- ===================== PANEL: RINGKASAN ===================== -->
+      <div class="panel active" id="panel-ringkasan">
+        <div class="grid2" style="margin-bottom:16px;">
+          <div class="card">
+            <h3>Distribusi Sampel</h3>
+            <p class="card-sub">30 Lancar (KOL 1&amp;2) : 30 Bermasalah (KOL 3,4,5) — random sampling 1x, tidak
+              dicari-cari</p>
+            <div class="donut-wrap">
+              <svg width="140" height="140" viewBox="0 0 140 140">
+                <circle cx="70" cy="70" r="54" fill="none" stroke="#e3e9f0" stroke-width="20" />
+                <circle cx="70" cy="70" r="54" fill="none" stroke="url(#gg)" stroke-width="20" stroke-dasharray="339.3"
+                  stroke-dashoffset="169.6" stroke-linecap="round" transform="rotate(-90 70 70)" />
+                <defs>
+                  <linearGradient id="gg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#e8654f" />
+                    <stop offset="100%" stop-color="#e3b23c" />
+                  </linearGradient>
+                </defs>
+                <text x="70" y="66" text-anchor="middle" font-family="Space Grotesk" font-size="22" font-weight="700"
+                  fill="#0b2545">50/50</text>
+                <text x="70" y="84" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6d7f96">rasio
+                  grup</text>
+              </svg>
+              <div class="dleg">
+                <div><span class="sw" style="background:#123a68;"></span><strong>30</strong> Lancar</div>
+                <div><span class="sw" style="background:#e3b23c;"></span><strong>30</strong> Bermasalah</div>
+                <div style="color:var(--muted); font-size:10.5px; margin-top:4px;">dari populasi 2.555
+                  rekening<br>(Lancar n=2.392 · Bermasalah n=163)</div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Definisi Kelompok</h3>
+            <p class="card-sub">Berdasarkan status kolektibilitas (KOL_ADK) — patokan OJK, hari tunggakan</p>
+            <div class="def-grid">
+              <div class="def-pill">
+                <div class="k">GRUP 0 · LANCAR</div>
+                <div class="t">KOL 1 + KOL 2</div>
+                <div class="d">Tepat waktu / telat ≤90 hari</div>
+              </div>
+              <div class="def-pill">
+                <div class="k">GRUP 1 · BERMASALAH</div>
+                <div class="t">KOL 3, 4, 5</div>
+                <div class="d">Telat &gt;90 hari s/d macet total</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <h3>X₁ · ln(Plafon)</h3>
+            <p class="card-sub">Logaritma plafon kredit (Rupiah)</p>
+            <div class="chk-row"><span class="lbl">Mean Lancar</span><span class="val num">17,66</span></div>
+            <div class="chk-row"><span class="lbl">Mean Bermasalah</span><span class="val num">17,38</span></div>
+            <div class="chk-row"><span class="lbl">Sig. individual</span><span class="val num">0,210</span></div>
+          </div>
+          <div class="card">
+            <h3>X₂ · ln(Jangka Waktu)</h3>
+            <p class="card-sub">Logaritma tenor kredit (bulan)</p>
+            <div class="chk-row"><span class="lbl">Mean Lancar</span><span class="val num">3,61</span></div>
+            <div class="chk-row"><span class="lbl">Mean Bermasalah</span><span class="val num">3,45</span></div>
+            <div class="chk-row"><span class="lbl">Sig. individual</span><span class="val num">0,061</span></div>
+          </div>
+          <div class="card">
+            <h3>X₃ · Rate (Bunga)</h3>
+            <p class="card-sub">Suku bunga kredit tahunan (%)</p>
+            <div class="chk-row"><span class="lbl">Mean Lancar</span><span class="val num">10,0%</span></div>
+            <div class="chk-row"><span class="lbl">Mean Bermasalah</span><span class="val num">17,2%</span></div>
+            <div class="chk-row"><span class="lbl">Sig. individual</span><span class="val num">0,0003</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== PANEL: ASUMSI ===================== -->
+      <div class="panel" id="panel-asumsi">
+        <div class="grid4">
+          <div class="card">
+            <h3>Kuantitatif</h3>
+            <div class="chk-row"><span class="chk-dot ok"></span><span class="lbl">3 prediktor numerik</span></div>
+            <p class="card-sub" style="margin-top:10px;">Semua variabel X berskala rasio/interval — syarat dasar
+              terpenuhi.</p>
+          </div>
+          <div class="card">
+            <h3>Multikolinearitas</h3>
+            <div class="chk-row"><span class="chk-dot ok"></span><span class="lbl">VIF maks 1,35</span></div>
+            <div class="chk-row"><span class="lbl">LN_PLAFON</span><span class="val num">1,349</span></div>
+            <div class="chk-row"><span class="lbl">LN_JW</span><span class="val num">1,290</span></div>
+            <div class="chk-row"><span class="lbl">RATE</span><span class="val num">1,063</span></div>
+          </div>
+          <div class="card">
+            <h3>Homogenitas (Box's M)</h3>
+            <div class="chk-row"><span class="chk-dot ok"></span><span class="lbl">Sig. 0,269 &gt; 0,05</span></div>
+            <div class="chk-row"><span class="lbl">Chi-Square</span><span class="val num">7,596</span></div>
+            <div class="chk-row"><span class="lbl">df</span><span class="val num">6</span></div>
+          </div>
+          <div class="card">
+            <h3>Normalitas Multivariat</h3>
+            <div class="chk-row"><span class="chk-dot ok"></span><span class="lbl">r Q-Q ≥ 0,96</span></div>
+            <div class="chk-row"><span class="lbl">Lancar</span><span class="val num">r=0,962</span></div>
+            <div class="chk-row"><span class="lbl">Bermasalah</span><span class="val num">r=0,983</span></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+          <h3>Uji Kesamaan Rata-rata (Wilks' Lambda Multivariat)</h3>
+          <p class="card-sub">Menguji ketiga variabel secara gabungan — ini yang menentukan signifikansi model, bukan
+            uji individual per variabel.</p>
+          <div class="grid3">
+            <div class="chk-row" style="border:none; flex-direction:column; align-items:flex-start; gap:2px;"><span
+                class="lbl">Wilks' Λ</span><span class="val num"
+                style="font-size:18px; color:var(--navy-900);">0,761</span></div>
+            <div class="chk-row" style="border:none; flex-direction:column; align-items:flex-start; gap:2px;"><span
+                class="lbl">Chi-Square</span><span class="val num"
+                style="font-size:18px; color:var(--navy-900);">15,547</span></div>
+            <div class="chk-row" style="border:none; flex-direction:column; align-items:flex-start; gap:2px;"><span
+                class="lbl">Sig.</span><span class="val num" style="font-size:18px; color:var(--teal);">0,0014</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== PANEL: FUNGSI & KLASIFIKASI ===================== -->
+      <div class="panel" id="panel-fungsi">
+        <div class="grid2">
+          <div class="card">
+            <h3>Fungsi Diskriminan Fisher</h3>
+            <p class="card-sub">Nasabah baru diklasifikasikan ke kelompok dengan skor Z tertinggi</p>
+            <div class="fn-box">
+              <div class="fl">Fungsi — Lancar</div>
+              <div class="feq">Z = <span class="c">24,30</span>·X₁ + <span class="c">4,85</span>·X₂ + <span
+                  class="c">0,740</span>·X₃ − 227,78</div>
+            </div>
+            <div class="fn-box" style="margin-bottom:0;">
+              <div class="fl">Fungsi — Bermasalah</div>
+              <div class="feq">Z = <span class="c">24,42</span>·X₁ + <span class="c">3,27</span>·X₂ + <span
+                  class="c">0,877</span>·X₃ − 226,09</div>
+            </div>
+            <div class="grid3" style="margin-top:14px;">
+              <div class="chk-row" style="border:none; flex-direction:column; gap:2px;"><span class="lbl">Centroid
+                  Lancar</span><span class="val num" style="font-size:15px;">−0,627</span></div>
+              <div class="chk-row" style="border:none; flex-direction:column; gap:2px;"><span class="lbl">Centroid
+                  Bermasalah</span><span class="val num" style="font-size:15px;">+0,627</span></div>
+              <div class="chk-row" style="border:none; flex-direction:column; gap:2px;"><span class="lbl">Canonical
+                  Corr.</span><span class="val num" style="font-size:15px;">0,489</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Structure Matrix</h3>
+            <p class="card-sub">Korelasi tiap prediktor terhadap skor diskriminan</p>
+            <div class="sbar-row">
+              <div class="n">Rate</div>
+              <div class="sbar-track">
+                <div class="sbar-fill" style="width:91.9%;"></div>
+              </div>
+              <div class="v">0,919</div>
+            </div>
+            <div class="sbar-row">
+              <div class="n">ln(J.Waktu)</div>
+              <div class="sbar-track">
+                <div class="sbar-fill" style="width:49.9%; background:linear-gradient(90deg,#e3b23c,#123a68);"></div>
+              </div>
+              <div class="v">−0,499</div>
+            </div>
+            <div class="sbar-row">
+              <div class="n">ln(Plafon)</div>
+              <div class="sbar-track">
+                <div class="sbar-fill" style="width:33.6%; background:linear-gradient(90deg,#e8654f,#123a68);"></div>
+              </div>
+              <div class="v">−0,336</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+          <h3>Hasil Klasifikasi (Prior 50:50)</h3>
+          <div class="grid3">
+            <div class="gauge-mini">
+              <div class="gv num">75,0<span style="font-size:16px;">%</span></div>
+              <div class="gl">Correct Classification Rate</div>
+            </div>
+            <div style="grid-column:span 2;">
+              <div class="cmx">
+                <div class="h"></div>
+                <div class="h">Prediksi Lancar</div>
+                <div class="h">Prediksi Bermasalah</div>
+                <div class="rl">Aktual Lancar</div>
+                <div class="cell ok"><span class="n">24</span><span class="p">80,0%</span></div>
+                <div class="cell bad"><span class="n">6</span><span class="p">20,0%</span></div>
+                <div class="rl">Aktual Bermasalah</div>
+                <div class="cell bad"><span class="n">9</span><span class="p">30,0%</span></div>
+                <div class="cell ok"><span class="n">21</span><span class="p">70,0%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== PANEL: REKOMENDASI ===================== -->
+      <div class="panel" id="panel-rekomendasi">
+        <div class="grid2" style="margin-bottom:14px;">
+          <div class="rec-card">
+            <span class="rec-tag">PRIORITAS</span>
+            <h4>Perketat monitoring rekening rate tinggi</h4>
+            <p>Gap rate Lancar (10,0%) vs Bermasalah (17,2%) tajam. Rekening rate ≥15% masuk watchlist sejak bulan
+              pertama pencairan.</p>
+          </div>
+          <div class="rec-card" style="border-left-color:var(--teal);">
+            <span class="rec-tag" style="background:rgba(46,196,182,0.15); color:#0f7a6f;">OPERASIONAL</span>
+            <h4>Bangun sistem early-warning</h4>
+            <p>Fungsi diskriminan ini (R²=23,9%) bisa jadi skor screening otomatis — rekening dekat centroid Bermasalah
+              (+0,627) ditandai untuk direview AO.</p>
+          </div>
+          <div class="rec-card" style="border-left-color:var(--navy-700);">
+            <span class="rec-tag" style="background:rgba(18,58,104,0.12); color:#123a68;">STRATEGIS</span>
+            <h4>Tinjau ulang kebijakan pricing</h4>
+            <p>Evaluasi apakah rate tinggi mencerminkan risiko lebih besar, atau justru mempercepat gagal bayar karena
+              beban cicilan berat.</p>
+          </div>
+          <div class="rec-card" style="border-left-color:var(--red-soft);">
+            <span class="rec-tag" style="background:rgba(232,101,79,0.13); color:#c0432c;">MITIGASI</span>
+            <h4>Restrukturisasi nasabah eksisting</h4>
+            <p>Untuk KOL 2-3 (baru mulai telat), tawarkan restrukturisasi sebelum turun ke KOL 4-5 (Diragukan/Macet).
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Catatan Metodologi &amp; Keterbatasan</h3>
+          <div class="chk-row"><span class="chk-dot ok"></span><span class="lbl">Sampel diambil 1x random sampling
+              murni, tidak dicari-cari untuk mengejar hasil signifikan</span></div>
+          <div class="chk-row"><span class="chk-dot ok"></span><span class="lbl">Proporsi 50:50 tidak mencerminkan
+              populasi asli (populasi hanya 6,4% Bermasalah/KOL3-5) — cocok untuk analisis eksploratif</span></div>
+          <div class="chk-row"><span class="chk-dot ok"></span><span class="lbl">R²=23,9% tergolong efek sedang (Cohen)
+              — model bermakna tapi bisa diperkuat dengan variabel histori pembayaran & profil usaha</span></div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      Sumber: Laporan LW321 · Kolektibilitas &amp; Tunggakan per AO (30 Jun 2026) · <span>Analisis Diskriminan Linear —
+        Fungsi Fisher, prior sama</span>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+    <script>
+
+    </body>
+</html >
