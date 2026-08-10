@@ -123,3 +123,13 @@
     .grid2,.grid3,.grid4{grid-template-columns:1fr;}
     .topbar .meta{display:none;}
   }
+
+.uner{ width:70px; height:auto; }
+.bri{ width:85px; height:auto; }
+
+@media (max-width:400px){
+  .uner{ width:40px; }
+  .bri{ width:50px; }
+  .brand .judul{font-size:20px; color:#93a6bd; font-family:'IBM Plex Mono',monospace; margin-top:1px;}
+  .brand .sub{font-size:11px; color:#93a6bd; font-family:'IBM Plex Mono',monospace; margin-top:1px;}
+}
