@@ -17,7 +17,7 @@
         <img src="gambar/uner.png" alt="uner"  class="uner">
         <img src="gambar/bri.png" alt="bri" class="bri">
         <div>
-          <div class="judul">Laporan Kolektibilitas dan Tunggakan</div>
+          <div class="judul">Hasil Analisis Kolektibilitas dan Tunggakan</div>
           <div class="sub">Menggungan Metode Analisis Diskriminan</div>
         </div>
       </div>
@@ -41,7 +41,7 @@
         </div>
         <div class="kpi-card flag-ok">
           <div class="kl">PressQ</div>
-          <div class="kv num">15<small>%</small></div>
+          <div class="kv num">15,0<small>%</small></div>
         </div>
         <div class="kpi-card">
           <div class="kl">Wilks' Λ Sig.</div>
@@ -66,7 +66,7 @@
         <div class="grid2" style="margin-bottom:16px;">
           <div class="card">
             <h3>Distribusi Sampel</h3>
-            <p class="card-sub">30 Lancar (KOL= 1,2) : 30 Bermasalah (KOL = 3,4,5) data dipilih secara random</p>
+            <p class="card-sub">30 Lancar (KOL= 1,2) : 30 Non-Lancar (KOL = 3,4,5) data dipilih secara random</p>
             <div class="donut-wrap">
               <svg width="140" height="140" viewBox="0 0 140 140">
                 <circle cx="70" cy="70" r="54" fill="none" stroke="#e3e9f0" stroke-width="20" />
@@ -85,9 +85,9 @@
               </svg>
               <div class="dleg">
                 <div><span class="sw" style="background:#123a68;"></span><strong>30</strong> Lancar</div>
-                <div><span class="sw" style="background:#e3b23c;"></span><strong>30</strong> Bermasalah</div>
+                <div><span class="sw" style="background:#e3b23c;"></span><strong>30</strong> Non-Lancar</div>
                 <div style="color:var(--muted); font-size:10.5px; margin-top:4px;">dari populasi 2.555
-                  rekening<br>Banyak rekening lancar = 2.392 <br> Banyal rekening bermasalah = 163)</div>
+                  rekening<br>Banyak rekening lancar = 2.392 <br> Banyak rekening Non-Lancar = 163)</div>
               </div>
             </div>
           </div>
@@ -101,7 +101,7 @@
                 <div class="d">tepat waktu - terlambat kurang dari 90 hari</div>
               </div>
               <div class="def-pill">
-                <div class="k">BERMASALAH</div>
+                <div class="k">NON-LANCAR</div>
                 <div class="t">KOL 3, 4, 5</div>
                 <div class="d">terlambat lebih dari 90 hari - macet total</div>
               </div>
@@ -114,21 +114,21 @@
             <h3>X₁ (Plafon)</h3>
             <p class="card-sub">Logaritma plafon kredit (Rupiah)</p>
             <div class="chk-row"><span class="lbl">Mean Lancar</span><span class="val num">17,66</span></div>
-            <div class="chk-row"><span class="lbl">Mean Bermasalah</span><span class="val num">17,38</span></div>
+            <div class="chk-row"><span class="lbl">Mean Non-Lancar</span><span class="val num">17,38</span></div>
             <div class="chk-row"><span class="lbl">Sig. individual</span><span class="val num">0,210</span></div>
           </div>
           <div class="card">
             <h3>X₂ (Jangka Waktu)</h3>
             <p class="card-sub">Logaritma tenor kredit (bulan)</p>
             <div class="chk-row"><span class="lbl">Mean Lancar</span><span class="val num">3,61</span></div>
-            <div class="chk-row"><span class="lbl">Mean Bermasalah</span><span class="val num">3,44</span></div>
+            <div class="chk-row"><span class="lbl">Mean Non-Lancar</span><span class="val num">3,44</span></div>
             <div class="chk-row"><span class="lbl">Sig. individual</span><span class="val num"> 0,61</span></div>
           </div>
           <div class="card">
             <h3>X₃ (Bunga)</h3>
             <p class="card-sub">Suku bunga kredit tahunan (%)</p>
             <div class="chk-row"><span class="lbl">Mean Lancar</span><span class="val num">99,8%</span></div>
-            <div class="chk-row"><span class="lbl">Mean Bermasalah</span><span class="val num">17,1%</span></div>
+            <div class="chk-row"><span class="lbl">Mean Non-Lancar</span><span class="val num">17,1%</span></div>
             <div class="chk-row"><span class="lbl">Sig. individual</span><span class="val num">
               <0,001
             </div>
@@ -147,7 +147,7 @@
           </div>
           <div class="card">
             <h3>Normalitas Multivariat</h3>
-            <div class="chk-row"><span class="lbl">Sig. (2-tailed)</span><span class="val num">0,00</span></div>
+            <div class="chk-row"><span class="lbl">Sig. (2-tailed)</span><span class="val num">0,000</span></div>
             <div class="chk-row"><span class="chk-dot ok"></span><span class="lbl">p-value (0,000) dapat disimpulkan bahwa data sudah berdistribusi normal multivariat</span></div>
           </div>
           <div class="card">
@@ -198,15 +198,15 @@
                 <span class="c">0,740</span>X₃</div>
             </div>
             <div class="fn-box" style="margin-bottom:0;">
-              <div class="fl">Bermasalah</div>
-              <div class="feq">D_bermasalah = − 226,09 + <span class="c">24,42</span>X₁ + <span class="c">3,27</span>X₂
+              <div class="fl">Non-Lancar</div>
+              <div class="feq">D_Non-Lancar = − 226,09 + <span class="c">24,42</span>X₁ + <span class="c">3,27</span>X₂
                 + <span class="c">0,877</span>X₃ </div>
             </div>
             <div class="grid3" style="margin-top:14px;">
               <div class="chk-row" style="border:none; flex-direction:column; gap:2px;"><span class="lbl">Centroid
                   Lancar</span><span class="val num" style="font-size:15px;">−0,551</span></div>
               <div class="chk-row" style="border:none; flex-direction:column; gap:2px;"><span class="lbl">Centroid
-                  Bermasalah</span><span class="val num" style="font-size:15px;">+0,551</span></div>
+                  Non-Lancar</span><span class="val num" style="font-size:15px;">+0,551</span></div>
               <div class="chk-row" style="border:none; flex-direction:column; gap:2px;"><span class="lbl">Canonical
                   Corr.</span><span class="val num" style="font-size:15px;">0,489</span></div>
             </div>
@@ -250,11 +250,11 @@
               <div class="cmx">
                 <div class="h"></div>
                 <div class="h">Prediksi Lancar</div>
-                <div class="h">Prediksi Bermasalah</div>
+                <div class="h">Prediksi Non-Lancar</div>
                 <div class="rl">Aktual Lancar</div>
                 <div class="cell ok"><span class="n">24</span><span class="p">80,0%</span></div>
                 <div class="cell bad"><span class="n">6</span><span class="p">20,0%</span></div>
-                <div class="rl">Aktual Bermasalah</div>
+                <div class="rl">Aktual Non-Lancar</div>
                 <div class="cell bad"><span class="n">9</span><span class="p">30,0%</span></div>
                 <div class="cell ok"><span class="n">21</span><span class="p">70,0%</span></div>
               </div>
